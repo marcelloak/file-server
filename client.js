@@ -19,13 +19,13 @@ const saveFile = (file) => {
     if (data) {
       rl.question('Overwrite? Y/N ', (answer) => {
         if (answer !== "Y" && answer !== "y") {
-          console.log('File already there.')
+          console.log('File already exists.')
           process.exit();
         }
         else {
           console.log('File overwritten.');
           fs.writeFile(destPath, file, () => {
-            console.log(`Downloaded ${srcPath} to ${destPath}.`)
+            console.log(`Overwrote ${destPath} with server's ${srcPath}.`)
           });
         }
         rl.close();
@@ -33,7 +33,7 @@ const saveFile = (file) => {
     }
     else {
       fs.writeFile(destPath, file, () => {
-        console.log(`Downloaded ${srcPath} to ${destPath}.`)
+        console.log(`Downloaded server's ${srcPath} to ${destPath}.`)
         process.exit();
       });
     }
